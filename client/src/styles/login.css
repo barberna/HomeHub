@@ -1,0 +1,96 @@
+﻿/* Public login layout, form, password control, and demo-account cards. */
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(320px, 1.05fr) minmax(440px, 0.95fr);
+  background: var(--white);
+}
+.login-story {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(2rem, 6vw, 5.5rem);
+  background: linear-gradient(145deg, #172033 0%, #242f4a 55%, #3730a3 130%);
+  color: white;
+}
+.login-story h1 {
+  max-width: 650px;
+  font-size: clamp(2.6rem, 5vw, 5rem);
+}
+.login-story > div > p:not(.eyebrow) {
+  max-width: 620px;
+  color: #cbd5e1;
+  font-size: 1.08rem;
+}
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.login-brand strong {
+  font-size: 1.1rem;
+}
+.login-story .brand-mark {
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.login-story .eyebrow {
+  color: #c7d2fe;
+}
+.privacy-note {
+  display: flex;
+  gap: 0.8rem;
+  max-width: 520px;
+  border: 1px solid rgb(255 255 255 / 0.15);
+  border-radius: var(--radius-md);
+  background: rgb(255 255 255 / 0.07);
+  padding: 1rem;
+}
+.privacy-note p {
+  margin: 0.25rem 0 0;
+  color: #cbd5e1;
+}
+.login-panel {
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: var(--slate-50);
+}
+.login-card {
+  width: min(100%, 460px);
+}
+.login-card > p:not(.eyebrow) {
+  margin-bottom: 1.4rem;
+}
+.login-card form {
+  display: grid;
+  gap: 0.5rem;
+}
+.login-card form label {
+  margin-top: 0.45rem;
+}
+.login-card form button {
+  margin-top: 0.5rem;
+}
+.password-field {
+  position: relative;
+}
+.password-field input {
+  padding-right: 3.2rem;
+}
+.password-field .icon-button {
+  position: absolute;
+  top: 50%;
+  right: 0.25rem;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+}
+.form-error {
+  margin: 0.25rem 0;
+  color: var(--red-700);
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+

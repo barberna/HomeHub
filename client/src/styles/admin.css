@@ -1,0 +1,298 @@
+﻿/* Administrator monitoring, services table, and Pi-hole presentation. */
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.metric-card {
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  padding: 1.15rem;
+  box-shadow: var(--shadow-sm);
+}
+.metric-card > strong {
+  display: block;
+  margin: 0.4rem 0;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+.metric-card > p,
+.metric-card > span {
+  margin: 0;
+  color: var(--slate-600);
+  font-size: 0.8rem;
+}
+.metric-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+.metric-heading p {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.metric-card .progress {
+  margin-top: 0.8rem;
+}
+.health-summary {
+  color: var(--green-700);
+  font-weight: 800;
+}
+.trend-list {
+  display: grid;
+  gap: 1rem;
+}
+.trend-list > div {
+  display: grid;
+  grid-template-columns: 80px 1fr 42px;
+  align-items: end;
+  gap: 0.7rem;
+}
+.trend-list span {
+  color: var(--slate-700);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.mini-bars {
+  height: 44px;
+  display: flex;
+  align-items: end;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--slate-200);
+}
+.mini-bars i {
+  flex: 1;
+  min-height: 4px;
+  border-radius: 0.2rem 0.2rem 0 0;
+  background: var(--indigo-600);
+}
+.chart-summary {
+  margin: 1rem 0 0;
+  font-size: 0.78rem;
+}
+.volume + .volume {
+  margin-top: 1.2rem;
+}
+.volume > span {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.45rem;
+}
+.volume small {
+  color: var(--slate-600);
+}
+.event-icon {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+.event-icon svg {
+  width: 15px;
+}
+.event-icon.healthy {
+  background: var(--green-100);
+  color: var(--green-700);
+}
+.event-icon.warning {
+  background: var(--amber-100);
+  color: var(--amber-800);
+}
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+.filter-bar label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.filter-bar select {
+  width: auto;
+}
+.filter-bar span {
+  color: var(--slate-600);
+  font-size: 0.8rem;
+}
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+th,
+td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--slate-100);
+  text-align: left;
+  white-space: nowrap;
+}
+thead th {
+  background: var(--slate-50);
+  color: var(--slate-600);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+tbody th {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.pihole-banner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #bbf7d0;
+  border-radius: var(--radius-lg);
+  background: #f0fdf4;
+  padding: 1.2rem;
+}
+.pihole-banner > span {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.8rem;
+  background: var(--green-100);
+  color: var(--green-700);
+}
+.pihole-banner h2,
+.pihole-banner p {
+  margin: 0;
+}
+.pihole-banner > svg {
+  color: var(--green-700);
+}
+.pihole-metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.query-type + .query-type {
+  margin-top: 1rem;
+}
+.query-type > span {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+.query-type small {
+  color: var(--slate-600);
+}
+.domain-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.domain-columns h3 {
+  color: var(--slate-600);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+}
+.domain-columns ol {
+  margin: 0;
+  padding-left: 1.4rem;
+  color: var(--slate-700);
+  font-size: 0.82rem;
+}
+.domain-columns li {
+  padding: 0.3rem 0;
+}
+.user-grid {
+    display: grid;
+    grid-template: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    align-items: start;
+}
+.user-profile-name strong {
+  color: black;
+}
+.user-grid .profile-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+}
+.user-grid .profile-card strong{
+    color: black;
+}
+.user-grid .user-data {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.user-grid .user-profile-name {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    gap: 5px;
+}
+.user-grid .avatar {
+    flex-shrink: 0;
+}
+.user-grid .profile-card .icon-button {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+.icon-button-userCard {
+  width: 4rem;
+  height: 2.55rem;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1.25px solid var(--slate-200);
+  border-radius: 0.65rem;
+  background: var(--white);
+  color: var(--slate-700);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.icon-button-userCard:hover {
+  background: var(--slate-100);
+  color: var(--slate-950);
+}
+.button-stack {
+  display: grid;
+  gap: 5px;
+}
+.user-grid .button-stack {
+    justify-self: end;
+}
+.icon-button-reset {
+  width: 125px;
+  height: 2rem;
+  place-items: center;
+  padding: 0;
+  border: 1.25px solid var(--slate-200);
+  border-radius: 0.4rem;
+  background: var(--white);
+  color: var(--slate-700);
+  cursor: pointer;
+  font-size: 0.8rem;
+  background-color: var(--slate-200);
+}
+.forgot-password-button {
+  border: none;
+  background: none;
+  font-size: 0.9rem;
+  color: var(--indigo-600);
+}
+.forgot-password-button:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}

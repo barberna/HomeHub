@@ -1,0 +1,29 @@
+name: homehub-test
+
+services:
+  postgres-test:
+    image: postgres:17.11-bookworm
+
+    environment:
+      POSTGRES_DB: homehub_test
+      POSTGRES_USER: homehub_test_bootstrap
+      POSTGRES_PASSWORD: ${TEST_POSTGRES_PASSWORD:?Set TEST_POSTGRES_PASSWORD}
+      POSTGRES_INITDB_ARGS: '--auth-host=scram-sha-256 --data-checksums'
+
+    ports:
+      - '127.0.0.1:5434:5432'
+
+    volumes:
+      - postgres_test_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U homehub_test_bootstrap -d homehub_test
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+volumes:
+  postgres_test_data:

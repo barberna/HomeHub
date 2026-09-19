@@ -1,0 +1,74 @@
+﻿/* Profile, help, forbidden, and not-found page presentation. */
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.large-avatar {
+  width: 4rem;
+  height: 4rem;
+  display: grid;
+  place-items: center;
+  border-radius: 1rem;
+  background: var(--indigo-50);
+  color: var(--indigo-700);
+}
+.profile-card h2,
+.profile-card p {
+  margin-bottom: 0.2rem;
+}
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--indigo-700);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+.preference-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.preference-row input {
+  width: 1.1rem;
+}
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.help-card {
+  display: flex;
+  gap: 1rem;
+}
+.help-card > svg {
+  flex: 0 0 auto;
+  color: var(--indigo-600);
+}
+.help-card p {
+  margin: 0;
+}
+.system-page {
+  min-height: 75vh;
+  display: grid;
+  place-content: center;
+  justify-items: start;
+  max-width: 650px;
+  margin: auto;
+  padding: 2rem;
+}
+.system-page > p:not(.eyebrow) {
+  font-size: 1.05rem;
+}
+.system-icon {
+  width: 3.8rem;
+  height: 3.8rem;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.2rem;
+  border-radius: 1rem;
+  background: var(--indigo-50);
+  color: var(--indigo-700);
+}

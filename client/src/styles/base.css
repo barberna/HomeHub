@@ -1,0 +1,175 @@
+﻿/* Browser defaults, typography, focus treatment, buttons, and form controls. */
+
+* {
+  box-sizing: border-box;
+}
+html {
+  min-width: 320px;
+  overflow-x: clip;
+  background: var(--slate-50);
+  color: var(--slate-950);
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: clip;
+  line-height: 1.5;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+a {
+  color: var(--indigo-700);
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+h1 {
+  margin-bottom: 0.55rem;
+  font-size: clamp(1.8rem, 3vw, 2.55rem);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+h2 {
+  margin-bottom: 0.4rem;
+  font-size: 1.18rem;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+h3 {
+  font-size: 1rem;
+}
+p {
+  color: var(--slate-600);
+}
+:focus-visible {
+  outline: 3px solid #818cf8;
+  outline-offset: 3px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-160%);
+  background: var(--slate-950);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+.eyebrow {
+  margin: 0 0 0.35rem;
+  color: var(--indigo-700);
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+.button {
+  min-height: 2.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.7rem;
+  padding: 0.65rem 1rem;
+  font-weight: 750;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.16s,
+    border-color 0.16s,
+    transform 0.16s;
+}
+.button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.button.primary {
+  background: var(--indigo-600);
+  color: white;
+  box-shadow: 0 6px 18px rgb(79 70 229 / 0.2);
+}
+.button.primary:hover:not(:disabled) {
+  background: var(--indigo-700);
+}
+.button.secondary {
+  background: var(--white);
+  border-color: var(--slate-300);
+  color: var(--slate-800);
+}
+.button.ghost {
+  background: var(--slate-100);
+  border-color: var(--slate-200);
+  color: var(--slate-800);
+}
+.button.danger {
+  background: var(--red-100);
+  border-color: #fecaca;
+  color: var(--red-700);
+}
+.full-width {
+  width: 100%;
+}
+.icon-button {
+  width: 4rem;
+  height: 2.55rem;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--slate-200);
+  border-radius: 0.65rem;
+  background: var(--white);
+  color: var(--slate-700);
+  cursor: pointer;
+}
+.icon-button:hover {
+  background: var(--slate-100);
+  color: var(--slate-950);
+}
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid var(--slate-300);
+  border-radius: 0.65rem;
+  background: var(--white);
+  color: var(--slate-950);
+  padding: 0.72rem 0.8rem;
+}
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--slate-400);
+}
+label {
+  color: var(--slate-800);
+  font-size: 0.87rem;
+  font-weight: 700;
+}

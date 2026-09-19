@@ -1,0 +1,11 @@
+﻿/*
+ * Global style entry point. Imports are ordered from broad foundations to narrow overrides so
+ * learners can trace the cascade without searching through one oversized file.
+ */
+@import './base.css';
+@import './layout.css';
+@import './components.css';
+@import './login.css';
+@import './account-system.css';
+@import './admin.css';
+@import './responsive.css';

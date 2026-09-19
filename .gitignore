@@ -1,0 +1,57 @@
+# Installed dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Test and coverage output
+coverage/
+playwright-report/
+test-results/
+
+# Private keys, certificates with private material, and credentials
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+.npmrc
+credentials*.json
+secrets/
+
+# Local databases and database backups
+*.db
+*.sqlite
+*.sqlite3
+*.bak
+backups/
+
+# Local environment files may contain secrets
+.env
+.env.*
+!.env.example
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
