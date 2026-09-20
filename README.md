@@ -1,8 +1,9 @@
 # HomeHub
+HomeHub is a full-stack household account portal built with React, TypeScript, Express, and PostgreSQL. It provides one-time administrator setup, authentication, household account management, session revocation, and administrator password recovery through Better Auth.
 
-HomeHub is a full-stack household dashboard built with React, TypeScript, Express, and PostgreSQL. Its implemented core provides account authentication, one-time administrator setup, household member management, and administrator password recovery.
+The project’s long-term goal is to provide a central dashboard for self-hosted household services. The current version implements the account-management foundation; service integrations remain planned work. HomeHub currently runs locally and is under active development.
 
-The project began as a frontend prototype. The account system now uses a real backend and database; AI, cloud storage, shared tasks, and infrastructure dashboards remain prototypes. This repository is under active development and is not yet a verified production release.
+The project began as a frontend prototype. The account system now uses a real backend and database. This repository is under active development and is not yet a verified production release.
 
 ## Current implementation
 
@@ -19,19 +20,20 @@ The project began as a frontend prototype. The account system now uses a real ba
 
 Member recovery is handled by an administrator. Email recovery is restricted to administrators. No pre-created demo accounts are supplied by the current authentication system.
 
-## Prototype features and roadmap
+## Roadmap
 
-The following screens are still present in this checkout, but their data is simulated:
+The Following list is a roadmap of features to be added to HomeHub as development continues:
 
-- Local AI chat and model availability.
-- Nextcloud storage summaries and file listings.
-- Notion-style tasks and calendar; edits are local UI state and do not write to Notion.
+- Notion-style tasks and calendar dashboard.
+- Nextcloud, and nextcloud storage summaries and file listings.
+- Pi-Hole ad blocker
 - Host metrics, container health, and Pi-hole statistics.
 - Dashboard activity, service health, and storage usage.
+- Local AI chat and model availability.
+- Hosted Media and music server
 
-External launch links do not establish an API integration. `VITE_DATA_MODE` is a reserved configuration value, not a switch that implements live service adapters. Profile identity is real, but the profile/help copy and appearance control still contain prototype behavior.
 
-The next release milestone is to expose only implemented account features, then add each service integration with its backend, authorization, error handling, and tests. See [the review and release plan](docs/PROJECT_REVIEW.md).
+The next release milestone is to implement HomeHubs first feature
 
 ## Architecture
 
@@ -70,6 +72,13 @@ package-lock.json     Shared dependency lockfile
 compose.yml           Local PostgreSQL service
 ```
 
+## Application Walkthrough
+
+Explore administrator setup, sign-in, household account management,
+session revocation, and password recovery.
+
+[Click for a visual walkthrough of HomeHub's Authentication Flow](https://barberna.github.io/HomeHub/assets/walkthrough.html)
+
 ## Local development
 
 Use Node.js 24.x (required by the server package), npm, and Docker Compose or an equivalent PostgreSQL instance. The current email module requires Gmail SMTP credentials at server startup, even when recovery is not being used.
@@ -95,6 +104,8 @@ Create the following private files from their examples. Use independent random c
 
 `DATABASE_URL` must use the `homehub_app` role; `MIGRATION_DATABASE_URL` must use `homehub_migrator`. URL-encode passwords when putting them in connection URLs. Use the database name and host port configured in the root `.env`.
 
+`DATABASE_URL` & `MIGRATIOB_DATABASE_URL` make sure to set postgres name used in root .env
+
 All `VITE_` values are visible to browser users. Database credentials, authentication/setup secrets, and SMTP credentials belong only in private server/database configuration.
 
 ### 2. Provision PostgreSQL
@@ -102,6 +113,11 @@ All `VITE_` values are visible to browser users. Database credentials, authentic
 ```sh
 docker compose up -d postgres
 ```
+To start a new container for this project
+
+'''sh
+docker compose -p homehub-public up -d postgres
+'''
 
 On a fresh database, run `database/bootstrap/001_roles_and_schema.sql` as the PostgreSQL bootstrap administrator. Compose does **not** mount or execute this script automatically. For example, in PowerShell, replace `BOOTSTRAP_USER` and `DATABASE_NAME` with your configured values:
 
@@ -112,7 +128,7 @@ Get-Content database/bootstrap/001_roles_and_schema.sql | docker compose exec -T
 Then open an interactive PostgreSQL session as that bootstrap administrator:
 
 ```sh
-docker compose exec postgres psql -U BOOTSTRAP_USER -d DATABASE_NAME
+docker compose -p homehub-public exec postgres sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB"'
 ```
 
 Use `\password homehub_migrator` and `\password homehub_app` to assign the two role passwords, then `\q` to exit. Match these passwords to the private connection URLs. The bootstrap script creates roles and schema privileges; migrations create tables and grant application access.
@@ -164,11 +180,11 @@ Review results on September 16, 2026:
 
 - Frontend and backend builds passed.
 - Backend unit tests: 10 passed.
-- Frontend tests: 3 passed, 6 failed. Existing tests still depend on mock authentication and synchronous session state.
-- Lint completed with 16 warnings.
+- Frontend tests: 29 passed.
+- Lint completed with 2 warnings.
 - Database integration tests and deployed behavior were not verified in this review.
 
-Frontend tests now run from the client workspace and only collect client/src tests. Backend tests remain separate. The older test results above predate frontend cleanup; the outdated authentication and service-card tests still need updating before they can serve as a release gate.
+Frontend tests now run from the client workspace and only collect client/src tests. Backend tests remain separate. Frontend unit tests cover authentication service behavior, including sign-in, sign-out, user management, session revocation, and administrator password recovery requests. These tests mock Better Auth responses to verify request parameters, returned data, and error handling. Backend unit tests and database integration tests run separately.
 
 Database integration tests cover setup rollback/concurrency and administrator password recovery. They require an isolated `homehub_test` database on `127.0.0.1:5434`, provisioned roles/migrations, and `server/.env.test` containing `TEST_APP_DATABASE_PASSWORD` and `TEST_MIGRATOR_DATABASE_PASSWORD`. The test Compose file also requires `TEST_POSTGRES_PASSWORD`. These tests modify test accounts and setup state; use a dedicated test database.
 
@@ -185,12 +201,6 @@ npx vitest run --config vitest.integration.config.ts
 - `working`: integrate and validate the subset intended for the next release.
 - `main`: reviewed release commits used by the server checkout.
 
-At review time all three local branches pointed to the same commit. Local `working` tracked lowercase `origin/working`, while the cached remote branch was uppercase `origin/Working`; normalize this before pushing.
-
-Implement each integration on a short-lived branch based on `working`, bring across only the relevant prototype code, and merge it into `working` after validation. Promote a tested release from `working` to `main`. Avoid merging the entire prototype branch to introduce one feature. See [the release plan](docs/PROJECT_REVIEW.md) for the initial cleanup scope and deployment checks.
-
 ## Portfolio
 
 This project demonstrates a transition from a React prototype to a database-backed application: authentication integration, transactional setup, administrator workflows, role-separated database access, and tests for failure paths. The service integrations above remain future work.
-
-See [resume wording](docs/RESUME.md) for concise descriptions grounded in the implementation. A public source repository does not require exposing the private household deployment or providing household credentials.

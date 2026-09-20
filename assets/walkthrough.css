@@ -1,0 +1,138 @@
+.hunt-walkthrough {
+  color: #203828;
+  margin: 2.75rem 0 3.5rem;
+}
+
+.hunt-walkthrough__intro {
+  border-left: 4px solid #94a3b8;
+  max-width: 740px;
+  padding: 0.2rem 0 0.2rem 1.25rem;
+}
+
+.hunt-walkthrough__eyebrow,
+.hunt-walkthrough__number {
+  color: #4f46e5;
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.hunt-walkthrough__intro h3,
+.hunt-walkthrough__copy h3 {
+  color: #203828;
+  font-family: Arial, sans-serif;
+  font-size: 1.55rem;
+  line-height: 1.25;
+  margin: 0.35rem 0 0.6rem;
+}
+
+.hunt-walkthrough__intro p:last-child,
+.hunt-walkthrough__copy p:last-child {
+  color: #526455;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.hunt-walkthrough__step {
+  align-items: center;
+  border-top: 1px solid #d9e0d4;
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr 2fr;
+  padding: 2rem 0;
+}
+
+.hunt-walkthrough__step--reverse {
+  grid-template-columns: 2fr 1fr;
+}
+
+.hunt-walkthrough__copy--reverse {
+    margin: 0 3rem 0 0;
+}
+
+.hunt-walkthrough__step--reverse .hunt-walkthrough__copy {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.hunt-walkthrough__step--reverse .hunt-walkthrough__device {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.hunt-walkthrough__copy {
+    max-width: 600px;
+  width: 90%;
+  margin: 0;
+  justify-self: center;
+  box-sizing: border-box;
+  border: 1px dashed red;;
+}
+
+.hunt-walkthrough__device {
+  background: #eef3e8;
+  border: 1px solid #d3dfca;
+  border-radius: 8px;
+  box-shadow: 0 14px 32px rgba(32, 56, 40, 0.14);
+  justify-self: center;
+  padding: 0.8rem;
+  width: min(80%, 730px);
+}
+
+.hunt-walkthrough__device img {
+  display: block;
+  height: auto;
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+.hunt-walkthrough__tag {
+  color: #5d6b7d;
+  display: inline-block;
+  font-family: Arial, sans-serif;
+  border: 1px solid #5d6b7d64;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #4e46e521;
+}
+
+.hunt-walkthrough__note {
+  border-top: 1px solid #d9e0d4;
+  color: #526455;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin: 0;
+  padding-top: 1.25rem;
+}
+
+@media (max-width: 760px) {
+  .hunt-walkthrough__step {
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    padding: 2.25rem 0;
+  }
+
+  .hunt-walkthrough__step--reverse .hunt-walkthrough__copy,
+  .hunt-walkthrough__step--reverse .hunt-walkthrough__device {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .hunt-walkthrough__copy {
+    max-width: none;
+  }
+
+  .hunt-walkthrough__device {
+    justify-self: center;
+    width: clamp(200px, 100%, 500px);
+  }
+}
+
