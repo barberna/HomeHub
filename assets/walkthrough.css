@@ -1,5 +1,4 @@
 .hunt-walkthrough {
-  color: #203828;
   margin: 2.75rem 0 3.5rem;
 }
 
@@ -22,7 +21,6 @@
 
 .hunt-walkthrough__intro h3,
 .hunt-walkthrough__copy h3 {
-  color: #203828;
   font-family: Arial, sans-serif;
   font-size: 1.55rem;
   line-height: 1.25;
@@ -69,7 +67,6 @@
   margin: 0;
   justify-self: center;
   box-sizing: border-box;
-  border: 1px dashed red;;
 }
 
 .hunt-walkthrough__device {
