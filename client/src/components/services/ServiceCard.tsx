@@ -1,6 +1,7 @@
 import {
   ArrowUpRight,
   Cloud,
+  Film,
   Server,
   ShieldCheck,
   Sparkles,
@@ -10,9 +11,11 @@ import {
 import { Link } from 'react-router-dom';
 import type { ServiceDefinition } from '../../types/domain';
 import { StatusBadge } from '../ui/Ui';
+
 const icons: Record<ServiceDefinition['icon'], LucideIcon> = {
   sparkles: Sparkles,
   cloud: Cloud,
+  movie: Film,
   notion: SquareKanban,
   shield: ShieldCheck,
   server: Server,
@@ -55,3 +58,4 @@ export function ServiceCard({ service }: { service: ServiceDefinition }) {
     </Link>
   );
 }
+

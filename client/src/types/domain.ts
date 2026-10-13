@@ -17,7 +17,7 @@ export interface ServiceDefinition {
   id: string;
   name: string;
   description: string;
-  icon: 'sparkles' | 'cloud' | 'notion' | 'shield' | 'server';
+  icon: 'sparkles' | 'cloud' | 'notion' | 'shield' | 'server' | 'movie';
   destination: string;
   external: boolean;
   category: 'local' | 'external';

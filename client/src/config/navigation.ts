@@ -4,7 +4,7 @@ import { appConfig, routes } from './appConfig';
 export interface NavigationItem {
   label: string;
   to: string;
-  icon: ServiceDefinition['icon'] | 'home' | 'grid' | 'user' | 'help';
+  icon: ServiceDefinition['icon'] | 'home' | 'grid' | 'user' | 'help' | 'sparkles';
   roles: UserRole[];
 }
 
@@ -14,6 +14,7 @@ const everyone: UserRole[] = ['admin', 'user'];
 export const householdNavigation: NavigationItem[] = [
   { label: 'Dashboard', to: routes.dashboard, icon: 'home', roles: everyone },
   { label: 'All services', to: routes.services, icon: 'grid', roles: everyone },
+  { label: 'JellyFin', to: routes.jellyFin, icon: 'movie', roles: everyone },
 ];
 /** AppShell renders this visibly separate group only when the context user has the admin role. */
 export const adminNavigation: NavigationItem[] = [
@@ -24,13 +25,20 @@ export const utilityNavigation: NavigationItem[] = [
   { label: 'Profile', to: routes.profile, icon: 'user', roles: everyone },
   { label: 'Help', to: routes.help, icon: 'help', roles: everyone },
 ];
-/**
- * Static prototype catalog. BACKEND INTEGRATION: GET /services may eventually provide status and
- * launch metadata, but route names and role-aware navigation should remain frontend configuration.
- * The backend must still filter its response using the authenticated server-side role.
- * ServicesPage and DashboardPage pass each object to ServiceCard. `external` tells ServiceCard to
- * use an ordinary anchor/new tab; otherwise it uses React Router with the internal destination.
- */
+
+
+// This Type is defined in domain.ts, this list of objects is maped to display 
+// all services in services page using our service card Component. 
 export const services: ServiceDefinition[] = [
-  
+  {
+    id: 'jellyfin',
+    name: 'Media Library',
+    description: 'Browse your library, resume watching, and request movies.',
+    icon: 'movie',
+    destination: routes.jellyFin,
+    external: false,
+    category: 'local',
+    status: 'not-configured',
+    roles: everyone,
+  },
 ];

@@ -26,4 +26,5 @@ export const routes = {
   setup: '/setup',
   createMember: '/admin/register',
   resetPassword: '/reset-password',
+  jellyFin: '/jellyFin',
 };

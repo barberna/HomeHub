@@ -38,4 +38,17 @@ describe('GET /api/health', () => {
       },
     });
   });
+
+  describe('Jellyfin routes', () => {
+    it('mounts the stats endpoint under /api/jellyfin', async () => {
+      const response = await request(createApp()).get('/api/jellyfin/stats');
+
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual({
+        MovieCount: 1420,
+        SeriesCount: 84,
+        EpisodeCount: 5210,
+      });
+    });
+  });
 });

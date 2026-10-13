@@ -13,6 +13,8 @@ import { AdminLoginPage } from './pages/adminSetupPage'
 import { CreateMemberPage } from './pages/CreateMemberPage';
 import { ResetPasswordPage } from './pages/resetPasswordPage';
 
+import JellyfinDashboard from './pages/JellyFinPage';
+
 export default function App() {
   return (
     <Routes>
@@ -24,6 +26,7 @@ export default function App() {
         <Route element={<AppShell />}>
           <Route index element={<Navigate to={routes.dashboard} replace />} />
           <Route path={routes.dashboard} element={<DashboardPage />} />
+          <Route path={routes.jellyFin} element={<JellyfinDashboard />} />
           <Route path={routes.services} element={<ServicesPage />} />
           <Route path={routes.profile} element={<ProfilePage />} />
           <Route path={routes.help} element={<HelpPage />} />
@@ -39,3 +42,4 @@ export default function App() {
     </Routes>
   );
 }
+

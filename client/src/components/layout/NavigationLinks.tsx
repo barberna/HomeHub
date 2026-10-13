@@ -8,6 +8,7 @@ import {
   Sparkles,
   SquareKanban,
   UserRound,
+  Clapperboard,
 } from 'lucide-react';
 import type { ComponentType } from 'react';
 import { NavLink } from 'react-router-dom';
@@ -43,6 +44,7 @@ const icons: Record<
   server: Server,
   user: UserRound,
   help: HelpCircle,
+  movie: Clapperboard,
 };
 function NavigationGroup({ items, role, onNavigate }: NavigationGroupProps) {
   // The role filter decides visibility before JSX is created. Backend authorization remains separate.
